@@ -16,28 +16,32 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   function searchMeal(term) {
-      clearResults();
-      fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${term}`)
-          .then(response => response.json())
-          .then(data => {
-              const meals = data.meals;
-              if (meals) {
-                  meals.slice(0, 5).forEach(meal => {
-                      displayMeal(meal);
-                  });
-                  if (meals.length > 5) {
-                      showAllButton.style.display = 'block';
-                  } else {
-                      showAllButton.style.display = 'none';
-                  }
-              } else {
-                  mealResults.innerHTML = '<p>No meals found. Please try another search term.</p>';
-              }
-          })
-          .catch(error => {
-              console.error('Error fetching data:', error);
-          });
-  }
+    clearResults(); // Clear previous results
+    fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${term}`)
+        .then(response => response.json())
+        .then(data => {
+            const meals = data.meals;
+            if (meals) {
+                meals.slice(0, 5).forEach(meal => {
+                    displayMeal(meal);
+                });
+                if (meals.length > 5) {
+                    showAllButton.style.display = 'block';
+                } else {
+                    showAllButton.style.display = 'none';
+                }
+            } else {
+                mealResults.innerHTML = '<p>No meals found. Please try another search term.</p>';
+                showAllButton.style.display = 'none';
+            }
+            // Scroll to the top of the page
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        })
+        .catch(error => {
+            console.error('Error fetching data:', error);
+        });
+}
+
 
   function showAllMeals() {
       const searchTerm = searchInput.value.trim();
