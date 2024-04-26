@@ -4,21 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meal Search</title>
-    
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
         <h1>Meal Search</h1>
     </header>
-
     <main>
-       
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search for a meal...">
+            <button id="searchButton">Search</button>
+        </div>
+        <div id="mealResults" class="meal-results"></div>
+        <button id="showAllButton" class="show-all-button">SHOW ALL</button>
     </main>
-
     <footer>
-        <p>&copy; 2024 Meal Search</p>
+        <p>Created by Your Name</p>
     </footer>
-    
-   
+    <script src="script.js"></script>
 </body>
 </html>
