@@ -99,5 +99,9 @@ footer {
 
 .show-all-button {
   display: block;
-  margin: 20px auto;
+  margin: 30px auto;
+  border-radius: 8px;
+  background-color: black;
+  color: wheat;
+  
 }
